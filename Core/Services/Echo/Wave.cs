@@ -2,27 +2,40 @@ namespace Core.Services.Echo;
 
 public class Wave
 {
-    private readonly IDictionary<int, bool> _echos = new Dictionary<int, bool>();
+    private readonly IDictionary<int, bool> _echo = new Dictionary<int, bool>();
 
-    public Wave(IEnumerable<int> neighboursPorts)
+    private Wave(IEnumerable<int> neighboursPorts, int? echoPort = default)
     {
+        EchoPort = echoPort;
         Id = Guid.NewGuid();
         foreach (var neighbourPort in neighboursPorts)
         {
-            _echos.Add(neighbourPort, false);
+            _echo.Add(neighbourPort, false);
         }
     }
 
     public Guid Id { get; }
 
+    public int? EchoPort { get; }
+
+    public static Wave CreateInitial(IEnumerable<int> neighboursPorts)
+    {
+        return new Wave(neighboursPorts);
+    }
+
+    public static Wave Create(int echoPort, IEnumerable<int> neighboursPorts)
+    {
+        return new Wave(neighboursPorts, echoPort);
+    }
+
     public void OnEchoReceived(int neighbourPort)
     {
-        _echos[neighbourPort] = true;
+        _echo[neighbourPort] = true;
     }
 
     public bool IsAllEchoReceived()
     {
-        var result = _echos.All(e => e.Value);
+        var result = _echo.All(e => e.Value);
         return result;
     }
 }

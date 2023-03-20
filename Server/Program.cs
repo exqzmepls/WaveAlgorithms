@@ -1,4 +1,5 @@
 using Core.Configuration;
+using Core.Services.Echo;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Configuration.AddCommandLine(args, switchMappings);
 
 // Add services to the container.
 builder.Services.AddSingleton<INetConfigurationProvider, NetConfigurationProvider>();
+builder.Services.AddSingleton<IEchoService, EchoService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
