@@ -1,6 +1,15 @@
+using Core.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
+var switchMappings = new Dictionary<string, string>()
+{
+    { "-p", "Endpoint" }
+};
+builder.Configuration.AddCommandLine(args, switchMappings);
+
 // Add services to the container.
+builder.Services.AddSingleton<INetConfigurationProvider, NetConfigurationProvider>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
