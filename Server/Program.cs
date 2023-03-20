@@ -11,6 +11,12 @@ var switchMappings = new Dictionary<string, string>()
 builder.Configuration.AddCommandLine(args, switchMappings);
 
 // Add services to the container.
+builder.Logging.ClearProviders();
+builder.Logging.AddSimpleConsole(options =>
+{
+    options.SingleLine = true;
+    options.TimestampFormat = "[HH:mm:ss.fffffff] ";
+});
 builder.Services.AddSingleton<INetConfigurationProvider, NetConfigurationProvider>();
 builder.Services.AddHttpClient<IEchoClient, HttpEchoClient>();
 builder.Services.AddSingleton<IEchoClient, HttpEchoClient>();
