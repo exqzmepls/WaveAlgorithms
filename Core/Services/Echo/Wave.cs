@@ -4,10 +4,14 @@ public class Wave
 {
     private readonly IDictionary<int, bool> _echo = new Dictionary<int, bool>();
 
-    private Wave(IEnumerable<int> neighboursPorts, int? echoPort = default)
+    private Wave(IEnumerable<int> neighboursPorts) : this(Guid.NewGuid(), default, neighboursPorts)
+    {
+    }
+
+    private Wave(Guid id, int? echoPort, IEnumerable<int> neighboursPorts)
     {
         EchoPort = echoPort;
-        Id = Guid.NewGuid();
+        Id = id;
         foreach (var neighbourPort in neighboursPorts)
         {
             _echo.Add(neighbourPort, false);
@@ -23,9 +27,9 @@ public class Wave
         return new Wave(neighboursPorts);
     }
 
-    public static Wave Create(int echoPort, IEnumerable<int> neighboursPorts)
+    public static Wave Create(Guid id, int echoPort, IEnumerable<int> neighboursPorts)
     {
-        return new Wave(neighboursPorts, echoPort);
+        return new Wave(id, echoPort, neighboursPorts);
     }
 
     public void OnEchoReceived(int neighbourPort)

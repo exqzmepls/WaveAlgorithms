@@ -17,19 +17,19 @@ public class NetConfigurationProvider : INetConfigurationProvider
         return endpoint;
     }
 
-    public IEnumerable<int> GetNeighbours()
+    public IReadOnlyCollection<int> GetNeighbours()
     {
         var endpoint = GetEndpoint();
         var netNodes = _configuration.GetRequiredSection("Net").Get<IEnumerable<Node>>()!;
 
         var node = netNodes.Single(n => n.Endpoint == endpoint);
-        return node.Neighbours;
+        return node.Neighbours.ToList().AsReadOnly();
     }
 
-    public IEnumerable<int> GetNeighbours(int exclude)
+    public IReadOnlyCollection<int> GetNeighbours(int exclude)
     {
         var neighbours = GetNeighbours();
         var result = neighbours.Where(n => n != exclude);
-        return result;
+        return result.ToList().AsReadOnly();
     }
 }

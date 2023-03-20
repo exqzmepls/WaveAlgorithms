@@ -1,3 +1,4 @@
+using Core.Clients.Echo;
 using Core.Configuration;
 using Core.Services.Echo;
 
@@ -11,6 +12,8 @@ builder.Configuration.AddCommandLine(args, switchMappings);
 
 // Add services to the container.
 builder.Services.AddSingleton<INetConfigurationProvider, NetConfigurationProvider>();
+builder.Services.AddHttpClient<IEchoClient, HttpEchoClient>();
+builder.Services.AddSingleton<IEchoClient, HttpEchoClient>();
 builder.Services.AddSingleton<IEchoService, EchoService>();
 
 builder.Services.AddControllers();
@@ -27,7 +30,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

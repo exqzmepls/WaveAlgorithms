@@ -1,6 +1,17 @@
 ﻿{
   "$schema": "https://json.schemastore.org/launchsettings.json",
   "profiles": {
+    "http 9000": {
+      "commandName": "Project",
+      "commandLineArgs": "-p 9000",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "http://localhost:9000",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
     "http 9001": {
       "commandName": "Project",
       "commandLineArgs": "-p 9001",
@@ -23,12 +34,57 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "https": {
+    "http 9003": {
       "commandName": "Project",
+      "commandLineArgs": "-p 9003",
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7287;http://localhost:5181",
+      "applicationUrl": "http://localhost:9003",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "http 9004": {
+      "commandName": "Project",
+      "commandLineArgs": "-p 9004",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "http://localhost:9004",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "http 9005": {
+      "commandName": "Project",
+      "commandLineArgs": "-p 9005",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "http://localhost:9005",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "http 9006": {
+      "commandName": "Project",
+      "commandLineArgs": "-p 9006",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "http://localhost:9006",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "http 9007": {
+      "commandName": "Project",
+      "commandLineArgs": "-p 9007",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "http://localhost:9007",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
